@@ -3,13 +3,13 @@ package com.brunofaustino.locationapp.models;
 import android.location.Location;
 
 public class User {
-    String name;
-    double currentLong, currentLat;
+
+    private String name;
+    private Location lastKnowLocation;
 
     public User(String name) {
         this.name = name;
     }
-
 
     public String getName() {
         return name;
@@ -19,17 +19,19 @@ public class User {
         this.name = name;
     }
 
-    public void setCurrentLocation(double lat, double longi){
-        this.currentLat = lat;
-        this.currentLong = longi;
+    public void setCurrentLocation(Location location) {
+        this.lastKnowLocation = location;
+    }
+
+    public Location getLastKnowLocation() {
+        return lastKnowLocation;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                " Name ='" + name + '\'' +
-                ", Long = " + currentLong +
-                ", Lat = " + currentLat +
+                "name='" + name + '\'' +
+                ", userLocation=" + lastKnowLocation +
                 '}';
     }
 }
